@@ -14,6 +14,8 @@ if ($conn->connect_error) {
 
 // Obtendo os dados do formulário
 $childName = $_POST['childName'];
+$childUser = $_POST['childUser'];
+$childPassword = $_POST['childPassword'];
 $birthDate = $_POST['birthDate'];
 $gender = $_POST['gender'];
 $parentName = $_POST['parentName'];
@@ -21,8 +23,8 @@ $contact = $_POST['contact'];
 $address = $_POST['address'];
 
 // Preparando a instrução SQL para inserção
-$sql = "INSERT INTO usuário (nome, dt_nascimento, genero, nome_responsavel, tel_responsavel, Endereco) 
-        VALUES ('$childName', '$birthDate', '$gender', '$parentName', '$contact', '$address')";
+$sql = "INSERT INTO usuário (nome, usuario, senha, dt_nascimento, genero, nome_responsavel, tel_responsavel, Endereco) 
+        VALUES ('$childName', '$childUser', '$childPassword', '$birthDate', '$gender', '$parentName', '$contact', '$address')";
 
 // Executando a instrução SQL
 if ($conn->query($sql) === TRUE) {

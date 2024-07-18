@@ -37,6 +37,8 @@ CREATE TABLE IF NOT EXISTS `web1`.`Usuário` (
   `idUsuário` INT NOT NULL AUTO_INCREMENT,
   `Avatar_idAvatar` INT,
   `nome` VARCHAR(45) NULL,
+  `usuario` VARCHAR(45) NULL,
+  `senha` VARCHAR(45) NULL,
   `dt_nascimento` DATE NULL,
   `Genero` VARCHAR(45) NULL,
   `nome_responsavel` VARCHAR(45) NULL,
