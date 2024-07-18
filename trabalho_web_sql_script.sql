@@ -18,16 +18,33 @@ CREATE SCHEMA IF NOT EXISTS `web1` DEFAULT CHARACTER SET utf8 ;
 USE `web1` ;
 
 -- -----------------------------------------------------
+-- Table `mydb`.`Avatar`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `web1`.`Avatar` (
+  `idAvatar` INT NOT NULL AUTO_INCREMENT,
+  `Pele` VARCHAR(45) NOT NULL,
+  `Rosto` VARCHAR(45) NOT NULL,
+  `Cabelo` VARCHAR(45) NOT NULL,
+  `Torso` VARCHAR(45) NOT NULL,
+  `Pernas` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idAvatar`))
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
 -- Table `mydb`.`Usuário`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `web1`.`Usuário` (
   `idUsuário` INT NOT NULL AUTO_INCREMENT,
+  `Avatar_idAvatar` INT,
   `nome` VARCHAR(45) NULL,
   `dt_nascimento` DATE NULL,
   `Genero` VARCHAR(45) NULL,
   `nome_responsavel` VARCHAR(45) NULL,
   `tel_responsavel` VARCHAR(45) NULL,
   `Endereco` VARCHAR(45) NULL,
+  CONSTRAINT `fk_Avatar_Usuario` FOREIGN KEY (`Avatar_idAvatar`) REFERENCES `web1`.`Avatar` (`idAvatar`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
   PRIMARY KEY (`idUsuário`))
 ENGINE = InnoDB;
 
@@ -50,10 +67,10 @@ CREATE TABLE IF NOT EXISTS `web1`.`Consulta` (
   `Dentista_CRM` INT NOT NULL,
   PRIMARY KEY (`Usuário_idUsuário`, `Dentista_CRM`),
   INDEX `fk_Consulta_Dentista1_idx` (`Dentista_CRM` ASC) VISIBLE,
-  CONSTRAINT `fk_Consulta_Usuário` FOREIGN KEY (`Usuário_idUsuário`) REFERENCES `mydb`.`Usuário` (`idUsuário`)
+  CONSTRAINT `fk_Consulta_Usuário` FOREIGN KEY (`Usuário_idUsuário`) REFERENCES `web1`.`Usuário` (`idUsuário`)
 	ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Consulta_Dentista1` FOREIGN KEY (`Dentista_CRM`) REFERENCES `mydb`.`Dentista` (`CRM`)
+  CONSTRAINT `fk_Consulta_Dentista1` FOREIGN KEY (`Dentista_CRM`) REFERENCES `web1`.`Dentista` (`CRM`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
