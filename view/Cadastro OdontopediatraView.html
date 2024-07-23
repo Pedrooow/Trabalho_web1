@@ -1,105 +1,81 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden; /* Remove scroll bars */
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 360px; /* Fixed width for mobile layout */
-            max-width: 100%;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            text-align: center;
-        }
-        .avatar-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-            /* Move avatar to the top */
-            margin-top: 0;
-        }
-        .avatar {
-            position: relative;
-            width: 150px;
-            height: 150px;
-            background-size: cover;
-            background-position: center;
-            border-radius: 50%;
-        }
-        .button-container {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            /* Ensure buttons are centered */
-            align-items: center;
-        }
-        .button {
-            background: #5197ff; /* Blue background */
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-            text-align: center;
-            display: inline-block;
-            width: 100%; /* Ensures the button is full-width */
-        }
-        .button:hover {
-            background: #448ef6; /* Darker blue on hover */
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro do Odontopediatra</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+    h2 {
+      margin-top: 0;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input, button {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background: #5197ff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #448ef6;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="avatar-container" id="avatarContainer">
-            <!-- Avatar será carregado aqui -->
-        </div>
-        <div class="button-container">
-            <a href="../view/Cadastro CriançaView.html" class="button">Cadastro Criança</a>
-            <a href="../view/Cadastro OdontopediatriaView.html" class="button">Cadastro Odontopediatria</a>
-            <a href="../view/Construção de Avatar.html" class="button">Construção de Avatar</a>
-        </div>
-    </div>
+  <form id="dentistRegistrationForm">
+    <h2>Cadastro do Odontopediatra</h2>
+    <label for="dentistName">Nome:</label>
+    <input type="text" id="dentistName" name="dentistName" required>
+    
+    <label for="crm">CRM:</label>
+    <input type="text" id="crm" name="crm" required>
+    
+    <button type="submit">Cadastrar</button>
+  </form>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            fetch('../DAO/avatarInfo.php')  // Caminho correto para o PHP
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        const avatarHtml = `
-                            <div class="avatar" style="background-image: url('${data.avatar.Pele}');"></div>
-                            <div class="avatar" style="background-image: url('${data.avatar.Rosto}');"></div>
-                            <div class="avatar" style="background-image: url('${data.avatar.Cabelo}');"></div>
-                            <div class="avatar" style="background-image: url('${data.avatar.Torso}');"></div>
-                            <div class="avatar" style="background-image: url('${data.avatar.Pernas}');"></div>
-                        `;
-                        document.getElementById('avatarContainer').innerHTML = avatarHtml;
-                    } else {
-                        window.location.href = '../view/Construção de Avatar.html';  // Redireciona se não houver avatar
-                    }
-                })
-                .catch(() => {
-                    window.location.href = '../view/Construção de Avatar.html';  // Redireciona em caso de erro
-                });
+  <script>
+    document.getElementById('dentistRegistrationForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(this);
+        fetch('../DAO/cadastrarOdontopediatraDAO.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            alert(data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
-    </script>
+    });
+  </script>
 </body>
 </html>
