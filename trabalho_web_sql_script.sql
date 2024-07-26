@@ -66,7 +66,12 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `web1`.`Consulta` (
   `Usuário_idUsuário` INT NOT NULL,
-  `Dentista_CRM` INT NOT NULL,
+  `Dentista_CRM` INT NULL,
+  `NomeDentista` VARCHAR(45) NULL,
+  `NomeCriança` VARCHAR(45) NULL,
+  `Data` DATE NULL,
+  `Hora` TIME NULL,
+  `procedimento` VARCHAR(45) NULL,
   PRIMARY KEY (`Usuário_idUsuário`, `Dentista_CRM`),
   INDEX `fk_Consulta_Dentista1_idx` (`Dentista_CRM` ASC) VISIBLE,
   CONSTRAINT `fk_Consulta_Usuário` FOREIGN KEY (`Usuário_idUsuário`) REFERENCES `web1`.`Usuário` (`idUsuário`)

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Consulta</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .navbar {
+      background-color: #5197ff;
+      width: 100%;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    .navbar .menu-icon {
+      display: none;
+      cursor: pointer;
+      padding: 14px 20px;
+      color: white;
+      font-size: 24px;
+    }
+    .navbar ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: space-around;
+    }
+    .navbar li {
+      display: inline;
+    }
+    .navbar a {
+      color: white;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+      display: block;
+      font-size: 16px;
+    }
+    .navbar a:hover {
+      background-color: #5197ff;
+    }
+    @media (max-width: 768px) {
+      .navbar ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+      }
+      .navbar li {
+        display: block;
+        text-align: center;
+      }
+      .navbar .menu-icon {
+        display: block;
+      }
+      .navbar.responsive ul {
+        display: flex;
+      }
+    }
+    .container {
+      max-width: 500px;
+      width: 100%;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 0;
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #5197ff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #448ef6;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <span class="menu-icon" onclick="toggleMenu()">☰</span>
+    <ul id="navbarMenu">
+      <li><a href="child_registration.html">Cadastro da Criança</a></li>
+      <li><a href="dentist_registration.html">Cadastro do Odontopediatra</a></li>
+      <li><a href="avatar_creation.html">Construir Avatar</a></li>
+      <li><a href="link_child_dentist.html">Vincular Criança</a></li>
+      <li><a href="Cadastro CriançaView.html">Cadastro da Criança</a></li>
+      <li><a href="Cadastro OdontopediatraView.html">Cadastro do Odontopediatra</a></li>
+      <li><a href="Construção de Avatar.html">Construir Avatar</a></li>
+      <li><a href="Cadastro de Consulta.html">Nova Consulta</a></li>
+    </ul>
+  </div>
+  <div class="container">
+    <h2>Cadastro de Consulta</h2>
+    <form id="appointmentForm">
+      <label for="child">Nome da Criança:</label>
+      <input type="text" id="child" name="child" placeholder="Nome da Criança" required>
+      <label for="dentist">Nome do Odontopediatra:</label>
+      <input type="text" id="dentist" name="dentist" placeholder="Nome do Odontopediatra" required>
+      <label for="date">Data da Consulta:</label>
+      <input type="date" id="date" name="date" required>
+      <label for="time">Hora da Consulta:</label>
+      <input type="time" id="time" name="time" required>
+      <label for="procedure">Tipo de Procedimento:</label>
+      <input type="text" id="procedure" name="procedure" placeholder="Ex.: Limpeza, Consulta de Rotina" required>
+      <button type="submit">Cadastrar Consulta</button>
+    </form>
+  </div>
+  <script>
+    function toggleMenu() {
+      const navbar = document.querySelector('.navbar');
+      navbar.classList.toggle('responsive');
+    }
+  
+    document.getElementById('appointmentForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const formData = new FormData(this);
+  
+      fetch('../DAO/cadastrarConsultaDAO.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Erro na resposta do servidor');
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (data.success) {
+          alert('Consulta cadastrada com sucesso!');
+        } else {
+          alert('Erro ao cadastrar consulta: ' + data.message);
+        }
+      })
+      .catch(error => {
+        console.error('Erro:', error);
+        alert('Erro ao cadastrar consulta.');
+      });
+    });
+  </script>
+</body>
+</html>

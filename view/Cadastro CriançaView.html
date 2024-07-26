@@ -9,17 +9,71 @@
       font-family: Arial, sans-serif;
       background-color: #f4f4f9;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      height: 100vh;
       margin: 0;
+      height: 100vh;
+    }
+    .navbar {
+      background-color: #5197ff;
+      width: 100%;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+    }
+    .navbar .menu-icon {
+      display: none;
+      cursor: pointer;
+      font-size: 24px;
+      color: white;
+    }
+    .navbar ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+    }
+    .navbar li {
+      margin: 0 10px;
+    }
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      display: block;
+    }
+    .navbar a:hover {
+      background-color: #448ef6;
+    }
+    @media (max-width: 768px) {
+      .navbar ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+      }
+      .navbar li {
+        margin: 10px 0;
+      }
+      .navbar .menu-icon {
+        display: block;
+      }
+      .navbar.responsive ul {
+        display: flex;
+      }
     }
     form {
       background: #fff;
       padding: 20px;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      width: 300px;
+      width: 100%;
+      max-width: 400px;
+      margin-top: 20px;
     }
     h2 {
       margin-top: 0;
@@ -37,7 +91,7 @@
       border-radius: 4px;
     }
     input {
-      width: 94%;
+      width: 100%;
       padding: 8px;
       margin-bottom: 10px;
       border: 1px solid #ccc;
@@ -55,6 +109,15 @@
   </style>
 </head>
 <body>
+  <div class="navbar">
+    <span class="menu-icon" onclick="toggleMenu()">☰</span>
+    <ul id="navbarMenu">
+      <li><a href="Cadastro CriançaView.html">Cadastro da Criança</a></li>
+      <li><a href="Cadastro OdontopediatraView.html">Cadastro do Odontopediatra</a></li>
+      <li><a href="Construção de Avatar.html">Construir Avatar</a></li>
+      <li><a href="Cadastro de Consulta.html">Nova Consulta</a></li>
+    </ul>
+  </div>
   <form id="childRegistrationForm">
     <h2>Cadastro da Criança</h2>
     <label for="childName">Nome:</label>
@@ -89,6 +152,11 @@
   </form>
 
   <script>
+    function toggleMenu() {
+      const navbar = document.querySelector('.navbar');
+      navbar.classList.toggle('responsive');
+    }
+
     document.getElementById('childRegistrationForm').addEventListener('submit', function(event) {
         event.preventDefault();
 

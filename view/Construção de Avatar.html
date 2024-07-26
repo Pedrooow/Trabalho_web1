@@ -45,179 +45,187 @@
     button:hover {
       background: #448ef6;
     }
-    .container{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 40vh;
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40vh;
     }
-    .container figure.avatar{
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        background-color: #448ef6;
+    .container figure.avatar {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background-color: #448ef6;
     }
-    .container figure.avatar img{
-        position: absolute;
-        border-radius: 50%;
+    .container figure.avatar img {
+      position: absolute;
+      border-radius: 50%;
     }
-    .container figure.avatar img.img{
-        width: 200px;
+    .container figure.avatar img.img {
+      width: 200px;
     }
   </style>
 </head>
 <body>
-    
   <form id="avatarCreationForm">
     <h2>Construa seu Avatar</h2>
     <div class="container">
-        <figure class="avatar">
-            <img class="img" id="picSkin" src="../images/pele/base.png">
-            <img class="img" id="picHair" src="">
-            <img class="img" id="picFace" src="">
-            <img class="img" id="picTorso" src="../images/torso/base.png">
-            <img class="img" id="picLegs" src="../images/pernas/base.png">
-        </figure>
+      <figure class="avatar">
+        <img class="img" id="picSkin" src="../images/pele/base.png">
+        <img class="img" id="picHair" src="">
+        <img class="img" id="picFace" src="">
+        <img class="img" id="picTorso" src="../images/torso/base.png">
+        <img class="img" id="picLegs" src="../images/pernas/base.png">
+      </figure>
     </div>
-    
     <label for="Nome do Usuario">Nome do Usuario:</label>
     <input type="text" id="idUsuario" name="idUsuario" value="">
     <label for="skinColorLabel">Cor da Pele:</label>
     <select id="skinColor" name="skinColor" required onchange="changeSkin()">
-        <option value="../images/pele/base.png">Escolha uma opção</option>
-        <option value="../images/pele/1.png">1</option>
-        <option value="../images/pele/2.png">2</option>
-        <option value="../images/pele/3.png">3</option>
-        <option value="../images/pele/4.png">4</option>
-        <option value="../images/pele/5.png">5</option>
-        <option value="../images/pele/6.png">6</option>
-        <option value="../images/pele/7.png">7</option>
-        <option value="../images/pele/8.png">8</option>
-        <option value="../images/pele/9.png">9</option>
-      </select>
-
+      <option value="../images/pele/base.png">Escolha uma opção</option>
+      <option value="../images/pele/1.png">1</option>
+      <option value="../images/pele/2.png">2</option>
+      <option value="../images/pele/3.png">3</option>
+      <option value="../images/pele/4.png">4</option>
+      <option value="../images/pele/5.png">5</option>
+      <option value="../images/pele/6.png">6</option>
+      <option value="../images/pele/7.png">7</option>
+      <option value="../images/pele/8.png">8</option>
+      <option value="../images/pele/9.png">9</option>
+    </select>
     <label for="faceLabel">Rosto:</label>
     <select id="face" name="face" required onchange="changeFace()">
-        <option value="">Escolha uma opção</option>
-        <option value="../images/rosto/1.png">1</option>
-        <option value="../images/rosto/2.png">2</option>
-        <option value="../images/rosto/3.png">3</option>
-        <option value="../images/rosto/4.png">4</option>
-        <option value="../images/rosto/5.png">5</option>
-        <option value="../images/rosto/6.png">6</option>
-        <option value="../images/rosto/7.png">7</option>
-        <option value="../images/rosto/8.png">8</option>
-        <option value="../images/rosto/9.png">9</option>
-        <option value="../images/rosto/10.png">10</option>
-        <option value="../images/rosto/11.png">11</option>
-        <option value="../images/rosto/12.png">12</option>
-        <option value="../images/rosto/13.png">13</option>
-        <option value="../images/rosto/14.png">14</option>
-        <option value="../images/rosto/15.png">15</option>
-        <option value="../images/rosto/16.png">16</option>
-      </select>
-
+      <option value="">Escolha uma opção</option>
+      <option value="../images/rosto/1.png">1</option>
+      <option value="../images/rosto/2.png">2</option>
+      <option value="../images/rosto/3.png">3</option>
+      <option value="../images/rosto/4.png">4</option>
+      <option value="../images/rosto/5.png">5</option>
+      <option value="../images/rosto/6.png">6</option>
+      <option value="../images/rosto/7.png">7</option>
+      <option value="../images/rosto/8.png">8</option>
+      <option value="../images/rosto/9.png">9</option>
+      <option value="../images/rosto/10.png">10</option>
+      <option value="../images/rosto/11.png">11</option>
+      <option value="../images/rosto/12.png">12</option>
+      <option value="../images/rosto/13.png">13</option>
+      <option value="../images/rosto/14.png">14</option>
+      <option value="../images/rosto/15.png">15</option>
+      <option value="../images/rosto/16.png">16</option>
+    </select>
     <label for="hairLabel">Cabelo:</label>
     <select id="hair" name="hair" required onchange="changeHair()">
-        <option value="">Escolha uma opção</option>
-        <option value="../images/cabelo/1.png">1</option>
-        <option value="../images/cabelo/2.png">2</option>
-        <option value="../images/cabelo/3.png">3</option>
-        <option value="../images/cabelo/4.png">4</option>
-        <option value="../images/cabelo/5.png">5</option>
-        <option value="../images/cabelo/6.png">6</option>
+      <option value="">Escolha uma opção</option>
+      <option value="../images/cabelo/1.png">1</option>
+      <option value="../images/cabelo/2.png">2</option>
+      <option value="../images/cabelo/3.png">3</option>
+      <option value="../images/cabelo/4.png">4</option>
+      <option value="../images/cabelo/5.png">5</option>
+      <option value="../images/cabelo/6.png">6</option>
     </select>
-    
     <label for="torsoLabel">Torso:</label>
     <select id="torso" name="torso" required onchange="changeTorso()">
-        <option value="../images/torso/base.png">Escolha uma opção</option>
-        <option value="../images/torso/1.png">1</option>
-        <option value="../images/torso/2.png">2</option>
-        <option value="../images/torso/3.png">3</option>
-        <option value="../images/torso/4.png">4</option>
-        <option value="../images/torso/5.png">5</option>
-        <option value="../images/torso/6.png">6</option>
-        <option value="../images/torso/7.png">7</option>
-        <option value="../images/torso/8.png">8</option>
-        <option value="../images/torso/9.png">9</option>
-        <option value="../images/torso/10.png">10</option>
-        <option value="../images/torso/11.png">11</option>
-        <option value="../images/torso/12.png">12</option>
-        <option value="../images/torso/13.png">13</option>
-        <option value="../images/torso/14.png">14</option>
-        <option value="../images/torso/15.png">15</option>
-        <option value="../images/torso/16.png">16</option>
-        <option value="../images/torso/17.png">17</option>
-        <option value="../images/torso/18.png">18</option>
-        <option value="../images/torso/19.png">19</option>
-        <option value="../images/torso/20.png">20</option>
-        <option value="../images/torso/21.png">21</option>
+      <option value="../images/torso/base.png">Escolha uma opção</option>
+      <option value="../images/torso/1.png">1</option>
+      <option value="../images/torso/2.png">2</option>
+      <option value="../images/torso/3.png">3</option>
+      <option value="../images/torso/4.png">4</option>
+      <option value="../images/torso/5.png">5</option>
+      <option value="../images/torso/6.png">6</option>
+      <option value="../images/torso/7.png">7</option>
+      <option value="../images/torso/8.png">8</option>
+      <option value="../images/torso/9.png">9</option>
+      <option value="../images/torso/10.png">10</option>
+      <option value="../images/torso/11.png">11</option>
+      <option value="../images/torso/12.png">12</option>
+      <option value="../images/torso/13.png">13</option>
+      <option value="../images/torso/14.png">14</option>
+      <option value="../images/torso/15.png">15</option>
+      <option value="../images/torso/16.png">16</option>
+      <option value="../images/torso/17.png">17</option>
+      <option value="../images/torso/18.png">18</option>
+      <option value="../images/torso/19.png">19</option>
+      <option value="../images/torso/20.png">20</option>
+      <option value="../images/torso/21.png">21</option>
     </select>
-
     <label for="legs">Pernas:</label>
     <select id="legs" name="legs" required onchange="changeLegs()">
-        <option value="../images/pernas/base.png">Escolha uma opção</option>
-        <option value="../images/pernas/1.png">1</option>
-        <option value="../images/pernas/2.png">2</option>
-        <option value="../images/pernas/3.png">3</option>
-        <option value="../images/pernas/4.png">4</option>
-        <option value="../images/pernas/5.png">5</option>
-        <option value="../images/pernas/6.png">6</option>
-        <option value="../images/pernas/7.png">7</option>
-        <option value="../images/pernas/8.png">8</option>
-        <option value="../images/pernas/9.png">9</option>
+      <option value="../images/pernas/base.png">Escolha uma opção</option>
+      <option value="../images/pernas/1.png">1</option>
+      <option value="../images/pernas/2.png">2</option>
+      <option value="../images/pernas/3.png">3</option>
+      <option value="../images/pernas/4.png">4</option>
+      <option value="../images/pernas/5.png">5</option>
+      <option value="../images/pernas/6.png">6</option>
+      <option value="../images/pernas/7.png">7</option>
+      <option value="../images/pernas/8.png">8</option>
+      <option value="../images/pernas/9.png">9</option>
     </select>
-    
     <button type="submit">Salvar Avatar</button>
   </form>
   <script>
-    function changeSkin(){
+    function changeSkin() {
       var selector = document.getElementById("skinColor");
       var img = document.getElementById("picSkin");
       var selected = selector.value;
       img.src = selected;
     }
-    function changeFace(){
+    function changeFace() {
       var selector = document.getElementById("face");
       var img = document.getElementById("picFace");
       var selected = selector.value;
       img.src = selected;
     }
-    function changeHair(){
+    function changeHair() {
       var selector = document.getElementById("hair");
       var img = document.getElementById("picHair");
       var selected = selector.value;
       img.src = selected;
     }
-    function changeTorso(){
+    function changeTorso() {
       var selector = document.getElementById("torso");
       var img = document.getElementById("picTorso");
       var selected = selector.value;
       img.src = selected;
     }
-    function changeLegs(){
+    function changeLegs() {
       var selector = document.getElementById("legs");
       var img = document.getElementById("picLegs");
       var selected = selector.value;
       img.src = selected;
     }
-  </script>
-  <script>
-    document.getElementById("avatarCreationForm").addEventListener("submit", function(event) {
-      event.preventDefault(); // Impedir o envio padrão do formulário
-    
-      var formData = new FormData(this);
-    
+
+    document.getElementById('avatarCreationForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const formData = new FormData(this);
+      const requestData = {
+        idUsuario: formData.get('idUsuario'),
+        skinColor: formData.get('skinColor'),
+        face: formData.get('face'),
+        hair: formData.get('hair'),
+        torso: formData.get('torso'),
+        legs: formData.get('legs')
+      };
+
       fetch('../DAO/cadastrarAvatarDAO.php', {
         method: 'POST',
-        body: formData
+        body: JSON.stringify(requestData),
+        headers: {
+          'Content-Type': 'application/json'
+        }
       })
-      .then(response => response.text())
-      .then(data => {
-        alert(data); // Exibir a resposta do servidor
+      .then(response => {
+        if (response.ok) {
+          alert('Avatar salvo com sucesso!');
+          window.location.href = '../main/index.html'; // Redireciona para a página principal após salvar
+        } else {
+          alert('Ocorreu um erro ao salvar o avatar.');
+        }
       })
       .catch(error => {
         console.error('Erro:', error);
+        alert('Ocorreu um erro ao salvar o avatar.');
       });
     });
   </script>
