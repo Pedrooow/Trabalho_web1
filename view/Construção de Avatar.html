@@ -72,13 +72,13 @@
     <div class="container">
       <figure class="avatar">
         <img class="img" id="picSkin" src="../images/pele/base.png">
-        <img class="img" id="picHair" src="">
-        <img class="img" id="picFace" src="">
+        <img class="img" id="picHair" src="../images/cabelo/1.png">
+        <img class="img" id="picFace" src="../images/rosto/1.png">
         <img class="img" id="picTorso" src="../images/torso/base.png">
         <img class="img" id="picLegs" src="../images/pernas/base.png">
       </figure>
     </div>
-    <label for="Nome do Usuario">Nome do Usuario:</label>
+    <label for="Nome do Usuario">Id do usuário:</label>
     <input type="text" id="idUsuario" name="idUsuario" value="">
     <label for="skinColorLabel">Cor da Pele:</label>
     <select id="skinColor" name="skinColor" required onchange="changeSkin()">
@@ -207,6 +207,8 @@
         torso: formData.get('torso'),
         legs: formData.get('legs')
       };
+
+      console.log(requestData);
 
       fetch('../DAO/cadastrarAvatarDAO.php', {
         method: 'POST',
