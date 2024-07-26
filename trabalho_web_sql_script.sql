@@ -55,9 +55,10 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Funcionario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `web1`.`Dentista` (
+  `id_dentista` int AUTO_INCREMENT NOT NULL,
   `CRM` INT(11) NOT NULL,
   `Nome` VARCHAR(45) NULL,
-  PRIMARY KEY (`CRM`))
+  PRIMARY KEY (`id_dentista`))
 ENGINE = InnoDB;
 
 
@@ -65,19 +66,19 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Consulta`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `web1`.`Consulta` (
+  `id_consulta` INT NOT NULL AUTO_INCREMENT,
   `Usuário_idUsuário` INT NOT NULL,
-  `Dentista_CRM` INT NULL,
+  `Dentista_id` INT NOT NULL,
   `NomeDentista` VARCHAR(45) NULL,
   `NomeCriança` VARCHAR(45) NULL,
   `Data` DATE NULL,
   `Hora` TIME NULL,
   `procedimento` VARCHAR(45) NULL,
-  PRIMARY KEY (`Usuário_idUsuário`, `Dentista_CRM`),
-  INDEX `fk_Consulta_Dentista1_idx` (`Dentista_CRM` ASC) VISIBLE,
+  PRIMARY KEY (`id_consulta`),
   CONSTRAINT `fk_Consulta_Usuário` FOREIGN KEY (`Usuário_idUsuário`) REFERENCES `web1`.`Usuário` (`idUsuário`)
 	ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Consulta_Dentista1` FOREIGN KEY (`Dentista_CRM`) REFERENCES `web1`.`Dentista` (`CRM`)
+  CONSTRAINT `fk_Consulta_Dentista1` FOREIGN KEY (`dentista_id`) REFERENCES `web1`.`Dentista` (`id_dentista`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
